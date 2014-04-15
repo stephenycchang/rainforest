@@ -1,2 +1,7 @@
 <h1>Products</h1>
-<p>In progress</p>
+<% @products.each do |product| %>
+<b>Name: </b> <%= product[:name] %><br>
+<%= product[:description] %><br>
+<%= product.formatted_price %>
+<br><br>
+<% end %>
