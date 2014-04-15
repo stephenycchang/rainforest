@@ -4,7 +4,7 @@
 <%= @product[:description] %>
 <%= @product.formatted_price %>
 
-<% if current_user %>
+
 
 <h3>Reviews</h3>
 
@@ -20,6 +20,8 @@
   <% end %>
 </p>
 <% end %>
+
+<% if current_user %>
 
 <h4>New Review</h4>
 
