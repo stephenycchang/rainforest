@@ -6,9 +6,6 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
-  def new
-  end
-
   def create
     @review = @product.reviews.build(review_params)
     @review.user_id = current_user.id
@@ -18,9 +15,6 @@ class ReviewsController < ApplicationController
     else
     render :action => :show  
     end
-  end
-
-  def edit
   end
 
   def destroy
