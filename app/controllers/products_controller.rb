@@ -48,6 +48,11 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def search
+    @products = Product.where("name ILIKE ?", "%#{params[:search]}%")
+    render @products
+  end
+
   private
   def product_params
     params.require(:product).permit(:name, :description, :price_in_cents)
