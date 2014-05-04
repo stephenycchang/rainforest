@@ -1,16 +1,17 @@
-<h1>Products</h1>
-<% @products.each do |product| %>
-<b>Name: </b> <%= product[:name] %><br>
-<%= product[:description] %><br>
-<%= product.formatted_price %>
-<br><br>
-<% end %>
+<%= link_to 'Add item', new_product_path %>
+
+<h1>Products <small><%= page_entries_info @products %></small></h1>
 
 <%= form_tag products_path, method: :get, authentication: false, id: 'search-form' do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search" %>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "Search" %>
 <% end %>
 
-<div id="products">
-  <%= render @products %>
-</div>
+<ul>
+  <div id="products">
+    <%= render @products %>
+  </div>
+</ul>
+
+<%= paginate @products %>
+

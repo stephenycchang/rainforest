@@ -2,8 +2,16 @@ class ProductsController < ApplicationController
   before_filter :ensure_logged_in, :only => [:show]
   
   def index
-    @products = Product.all
-    Product.where("name ILIKE ?", "%#{params[:search]}%")
+    @products = if params[:search]
+      Product.where("name ILIKE ?", "%#{params[:search]}%").page(params[:page])
+    else
+      Product.order('products.created_at DESC').page(params[:page])
+    end
+
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
   end
 
   def show
@@ -46,11 +54,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.destroy
     redirect_to products_path
-  end
-
-  def search
-    @products = Product.where("name ILIKE ?", "%#{params[:search]}%")
-    render @products
   end
 
   private

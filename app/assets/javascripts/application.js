@@ -35,16 +35,37 @@
 // });
 
 $(document).ready(function() {
-  $('#search-form').submit(function(event)
+  $('#search-form').submit(function(event) {
     event.preventDefault();
-    var searchValue = $('search').val();
-
+    var searchValue = $('#search').val();
+    $('#products').html('');
     $.ajax({
-      url: '/products/search?search=' + searchValue
-      type: 'GET'
-      dataType: 'html'
-    }).done(function(data){
-      $('products').html(data);
+      url: '/products?search=' + searchValue,
+      type: 'GET',
+      dataType: 'script'
     });
   });
+});
+
+// $.getScript('/products?search=' + searchValue)
+
+// jQuery(function(){
+//   $(window).scroll(function(){
+//     if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+//       console.log($('pagination span.next').children().attr('href'));
+//       $.getScript($('pagination span.next').children().attr('href'));
+//     }
+//   });
+// });
+
+jQuery(function() {
+  if ($('.pagination').length) {
+    $(window).scroll(function() {
+      var url = $('.pagination span.next').children().attr('href');
+      if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+        $('.pagination').text("Fetching more products...");
+        return $.getScript(url);
+      }
+    });
+  }
 });
