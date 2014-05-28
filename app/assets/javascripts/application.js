@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+
 // $(document).ready(function()){
 //   function display_search_results() {
 //     if (this.readyState === 4) {
