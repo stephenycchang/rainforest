@@ -3,8 +3,6 @@
     <li class="name">
       <h1><%= link_to "Rainforest", root_path %></h1>
     </li>
-    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
 
   <section class="top-bar-section">
@@ -31,7 +29,7 @@
         <div class="row collapse">
           <div >
             <%= form_tag products_path, method: :get, authentication: false, role: 'search', id: 'search-form' do %>
-            <li><%= text_field_tag :search, params[:search], placeholder: 'Find me' %></li>
+            <li><%= text_field_tag :search, params[:search], placeholder: 'Enter search term' %></li>
           </div>
           <div>
             <li><%= submit_tag "Search" , class: 'button expand' %></li>

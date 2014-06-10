@@ -16,3 +16,10 @@
 
  */
 
+body {
+  background-color: black;
+}
+
+.changeme {
+  color: white;
+}
