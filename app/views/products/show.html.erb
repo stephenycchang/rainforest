@@ -1,23 +1,23 @@
 <div class='row'>
   <div class='small-6 large-centered columns text-center'>
-    <h1>Products</h1>
+    <h1 class='changeme'>Products</h1>
 
-    <p>Name: <%= @product[:name] %></p>
-    <p>Description: <%= @product[:description] %></p>
-    <p>Price: $<%= @product.formatted_price %></p><hr>
+    <p class='changeme'>Name: <%= @product[:name] %></p>
+    <p class='changeme'>Description: <%= @product[:description] %></p>
+    <p class='changeme'>Price: $<%= @product.formatted_price %></p><hr>
 
     <% if current_user %>
 
-    <h3>Reviews</h3>
+    <h3 class='changeme'>Reviews</h3>
 
-    <p>Reviews for <%= @product.name %></p>
+    <p class='changeme'>Reviews for <%= @product.name %></p>
 
     <% @product.reviews.each do |review| %>
-    <p>
+    <p class='changeme'>
       <%= review.comment %>
       <br>
       <% if review.user != nil %>
-      <em> by <%= review.user.name %></em><br>
+      <em class='changeme'> by <%= review.user.name %></em><br>
       Added on: <%= review.created_at %><hr>
       <% end %>
     </p>
@@ -25,7 +25,7 @@
 
 
 
-    <h4>New Review</h4>
+    <h4 class='changeme'>New Review</h4>
 
     <%= form_for([@product, @review]) do |f| %>
     <% if @review.errors.any? %>
@@ -41,11 +41,11 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :comment %><br />
+      <%= f.label :comment, class: 'changeme' %><br />
       <%= f.text_area :comment, placeholder: 'Your comment goes here' %>
     </div>
     <div class="actions">
-      <%= f.submit %>
+      <%= submit_tag "Create Review", class: 'button expand radius round' %>
     </div>
     <% end %>
 

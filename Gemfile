@@ -19,3 +19,11 @@ group :development do
   gem 'quiet_assets'
   gem 'spring'
 end
+
+group :production do
+  gem 'rails_12factor'
+  gem 'unicorn'
+  gem 'thin'
+end
+
+ruby "2.1.1"
