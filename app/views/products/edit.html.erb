@@ -1,40 +1,41 @@
-<h1>Edit a Product</h1>
+<div class='row'>
+  <div class='small-6 large-centered columns text-center'>
 
-<%= form_for @product do |f| %>
-  <% if @product.errors.any? %>
+    <h1 class='changeme'>Edit Me</h1>
+
+    <%= form_for @product do |f| %>
+    <% if @product.errors.any? %>
     <div id = "error_explanation">
       <h2>
         <%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved
       </h2>
       <ul>
         <% @product.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+        <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
-  <% end %>
-  
-  <div class = "field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <% end %>
+
+    <div class = "field">
+      <%= f.label :name, class: 'changeme' %><br>
+      <%= f.text_field :name %>
+    </div>
+    <div class = "field">
+      <%= f.label :description, class: 'changeme' %><br>
+      <%= f.text_area :description %>
+    </div>
+    <div class = "field">
+      <%= f.label :price_in_cents, class: 'changeme' %><br>
+      <%= f.number_field :price_in_cents %>
+    </div>
+
+    <div class = "actions">
+      <%= submit_tag "Submit", class: 'button expand radius round' %>
+    </div>
+    <% end %>
+
+    <%= link_to 'Back', product_path, class: 'button radius round changeme' %>
+
   </div>
-  <div class = "field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
-  </div>
-  <div class = "field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class = "field">
-    <%= f.label :price_in_cents %><br>
-    <%= f.number_field :price_in_cents %>
-  </div>
-  <div class = "field">
-    <%= f.label "Category" %><br>
-    <%= f.select :category_id, options_from_collection_for_select(Category.order(:name), :id, :name), include_blank: true %>
-  </div>
-  <div class = "actions">
-    <%= f.submit "Submit" %>
-  </div>
-<% end %>
+</div>

@@ -6,6 +6,8 @@
     <p class='changeme'>Description: <%= @product[:description] %></p>
     <p class='changeme'>Price: $<%= @product.formatted_price %></p><hr>
 
+    <%= link_to 'Edit', edit_product_path, class: 'button radius round changeme' %>
+
     <% if current_user %>
 
     <h3 class='changeme'>Reviews</h3>
