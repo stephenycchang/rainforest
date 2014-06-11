@@ -6,6 +6,11 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    review = @product.reviews.find(:id)
+  end
+
   def show
     @review = Review.find(params[:id])
   end

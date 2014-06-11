@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'categories/show'
 
   resources :products do
-    resources :reviews, :except => [:index, :edit, :show, :update, :destroy]
+    resources :reviews, :except => [:index, :show, :update, :destroy]
 
     collection do
       get 'search'
